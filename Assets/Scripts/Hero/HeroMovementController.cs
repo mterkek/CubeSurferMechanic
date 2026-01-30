@@ -25,6 +25,8 @@ public class HeroMovementController : MonoBehaviour
     private void SetHorizontalMovement()
     {
         newPositionX= transform.position.x + heroInputController.HorizontalValue() * horizontalMovementSpeed * Time.fixedDeltaTime;
+       // newPositionX = Mathf.Clamp(newPositionX, horizontalMovementLimit, horizontalMovementLimit);
+
         transform.position = new Vector3(newPositionX, transform.position.y, transform.position.z);
     }
 

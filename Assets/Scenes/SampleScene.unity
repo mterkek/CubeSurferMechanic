@@ -142,8 +142,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   heroInputController: {fileID: 30748651}
-  forwardmovementSpeed: 1
-  horizontalMovementSpeed: 20
+  forwardmovementSpeed: 2
+  horizontalMovementSpeed: 40
   horizontalMovementLimit: 0
 --- !u!114 &30748651
 MonoBehaviour:
@@ -186,7 +186,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 30748646}
   serializedVersion: 4
-  m_Mass: 1
+  m_Mass: 0.1
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -616,7 +616,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e6a3b5b36a03f4c8f9968537a0840892, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.5
+      value: 1.6
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e6a3b5b36a03f4c8f9968537a0840892, type: 3}
       propertyPath: m_LocalPosition.z
@@ -649,6 +649,10 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: e6a3b5b36a03f4c8f9968537a0840892, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: e6a3b5b36a03f4c8f9968537a0840892, type: 3}
+      propertyPath: m_DynamicOccludee
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: e6a3b5b36a03f4c8f9968537a0840892, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
@@ -757,7 +761,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 728c2db0dd8974d5caf0776e73157779, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.01
+      value: 0.011
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 728c2db0dd8974d5caf0776e73157779, type: 3}
       propertyPath: m_LocalRotation.w
