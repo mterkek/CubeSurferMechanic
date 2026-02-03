@@ -2,32 +2,46 @@ using UnityEngine;
 
 public class HeroMovementController : MonoBehaviour
 {
+    [SerializeField] private HeroInputController heroInputController;
 
-    [SerializeField] private HeroInputController heroInputController;    
+    [Header("Speeds")]
+    [SerializeField] private float forwardMovementSpeed = 5f;
+    [SerializeField] private float horizontalMovementSpeed = 5f;
 
-    [SerializeField] private float forwardmovementSpeed;
-    [SerializeField] private float horizontalMovementSpeed;
-    [SerializeField] private float horizontalMovementLimit;
-    
+    [Header("Horizontal")]
+    [SerializeField] private float horizontalMovementLimit = 2f;
+    [SerializeField] private float horizontalSmooth = 12f; // büyüdükçe daha hızlı yakalar (daha az gecikme)
 
-    private float newPositionX;
-    void FixedUpdate()
+    private float targetX;
+
+    private void Start()
     {
-        SetForwardMovementSpeed();
-        SetHorizontalMovement();    
+        targetX = transform.position.x;
     }
 
-    private void SetForwardMovementSpeed()
+    private void Update()
     {
-        transform.Translate(Vector3.down * forwardmovementSpeed * Time.fixedDeltaTime);
+        SetForwardMovement();
+        SetHorizontalMovementSmooth();
     }
 
-    private void SetHorizontalMovement()
+    private void SetForwardMovement()
     {
-        newPositionX= transform.position.x + heroInputController.HorizontalValue() * horizontalMovementSpeed * Time.fixedDeltaTime;
-       // newPositionX = Mathf.Clamp(newPositionX, horizontalMovementLimit, horizontalMovementLimit);
-
-        transform.position = new Vector3(newPositionX, transform.position.y, transform.position.z);
+        // Mavi ok (world forward) her zaman ileri
+        transform.Translate(Vector3.forward * forwardMovementSpeed * Time.deltaTime, Space.World);
     }
 
+    private void SetHorizontalMovementSmooth()
+    {
+        // 1) hedef X’i input ile güncelle
+        targetX += heroInputController.HorizontalValue() * horizontalMovementSpeed * Time.deltaTime;
+
+        // 2) limit uygula
+        targetX = Mathf.Clamp(targetX, -horizontalMovementLimit, horizontalMovementLimit);
+
+        // 3) anlık setlemek yerine hedefe Lerp ile yaklaş
+        float newX = Mathf.Lerp(transform.position.x, targetX, horizontalSmooth * Time.deltaTime);
+
+        transform.position = new Vector3(newX, transform.position.y, transform.position.z);
+    }
 }
