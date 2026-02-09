@@ -142,9 +142,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   heroInputController: {fileID: 30748651}
-  forwardmovementSpeed: 2
   horizontalMovementSpeed: 40
-  horizontalMovementLimit: 0
 --- !u!114 &30748651
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -627,7 +625,6 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: e6a3b5b36a03f4c8f9968537a0840892, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.61
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e6a3b5b36a03f4c8f9968537a0840892, type: 3}
       propertyPath: m_LocalPosition.y
